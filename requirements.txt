@@ -1,0 +1,1 @@
+Data Generation & Manipulationpandas>=2.0.0numpy>=1.24.0Optional: Visualization (if you run the script standalone to check plots)matplotlib>=3.7.0
