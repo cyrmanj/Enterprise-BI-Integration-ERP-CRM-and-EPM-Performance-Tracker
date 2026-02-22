@@ -1,0 +1,7 @@
+# Treat .dax files as a detectable language (mapping to a similar syntax like SQL)
+*.dax linguist-language=SQL
+*.pbit linguist-language=SQL
+*.pbix linguist-language=SQL
+
+# Hide the Python script from the language statistics
+*.py linguist-detectable=false
