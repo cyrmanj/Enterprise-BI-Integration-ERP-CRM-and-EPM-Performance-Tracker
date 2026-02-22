@@ -1,0 +1,23 @@
+--budget variance:
+Budget Variance $ = [Total Actuals] - [Total Budget]
+
+-- Cost per Entity:
+Cost per Entity = 
+CALCULATE([Total Actuals],ALLEXCEPT(Oracle_EBS_Actuals, Oracle_EBS_Actuals[Entity]))
+
+--efficiency ratio:
+Nearshore Efficiency Ratio = 
+VAR US_Avg = CALCULATE([Total Actuals], Oracle_EBS_Actuals[Entity] = "US_HQ")
+VAR CR_Avg = CALCULATE([Total Actuals], Oracle_EBS_Actuals[Entity] = "Costa_Rica_Nearshore")
+RETURN
+DIVIDE(US_Avg - CR_Avg, US_Avg, 0)
+
+--total actuals
+Total Actuals = SUM(Oracle_EBS_Actuals[Amount_USD])
+
+--total budget
+Total Budget = SUM(Hyperion_Budget[Budget_Amount])
+
+--variance %
+Variance % = 
+DIVIDE([Budget Variance $],[Total Budget],0)
